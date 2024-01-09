@@ -1,12 +1,17 @@
 import mongoose, { Schema, model } from "mongoose";
 
 const userSchema = new Schema({
-    name: {
+    firstName: {
         type : String,
         required: true,
-        unique: true,
         trim: true,
-        // maxlength: [150, "FullName should be less than 150 characters"],
+        maxlength: [25, "Name should be less than 25 characters"],
+    },
+    lastName: {
+        type : String,
+        required: true,
+        trim: true,
+        maxlength: [25, "Name should be less than 25 characters"],
     },
     email: {
         type:String,
@@ -16,7 +21,7 @@ const userSchema = new Schema({
     },
     password:{
         type:String,
-        // minlength:[6, 'Password must have atleast 6 character'],
+        minlength:[6, 'Password must have atleast 6 character'],
         required: true,
     },
     role:{
@@ -42,6 +47,10 @@ const userSchema = new Schema({
     blocked: {
         type: Boolean,
         default: false
+    },
+    isDelated:{
+type:Boolean,
+default:false
     },
     wishlist: [{
         type: mongoose.SchemaTypes.ObjectId,

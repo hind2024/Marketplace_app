@@ -1,8 +1,9 @@
 import express from 'express'
-import { dbConnection } from './database/dbConnection.js'
+
 import cors from "cors"
 import dotenv from 'dotenv'
 import {bootstrap} from "./src/bootstrap.js"
+import { connectionBD } from './DataBase/connectionDB.js'
 
 const app = express()
 const port = process.env.PORT || 5000
@@ -13,7 +14,8 @@ dotenv.config()
 app.use(cors())
 
  // connection to database
- dbConnection()
+
+ connectionBD()
 bootstrap(app) 
   
 

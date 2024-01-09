@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { userModel } from "../../../DataBase/models/user.model.js";
+
 import { AppError } from "../../utils/AppError.js";
 import { catchError } from "../../utils/catchError.js";
 import { sendEmail } from "../../utils/email.js";
@@ -7,6 +7,7 @@ import bcrypt, { compare } from "bcrypt"
 import Jwt from "jsonwebtoken";
 import { OAuth2Client } from 'google-auth-library'
 import axios from "axios";
+import { userModel } from "../../../DataBase/models/user.model.js";
 
 //  ******************************* sign up ***************************
 

@@ -1,13 +1,13 @@
-import { Schema,model } from "mongoose";
+import { Schema, model } from "mongoose";
 import slugify from "slugify";
 
-const categorySchema = new Schema({
+const brandSchema = new Schema({
     name: {
         type : String,
-        required:[true, 'Category Name is Required'],
+        required:[true,'brand Name is Required'],
         unique: true,
         trim: true,
-        maxlength: [200,"Name should be less than 200 characters"],
+        maxlength: [100,"Name should be less than 100 characters"],
     },
     slug: {
         type :String,
@@ -21,16 +21,16 @@ const categorySchema = new Schema({
     timestamps: true
 })
 
-// slug name when create
-categorySchema.pre('save', function(){
+// slug name when ceate new brand
+brandSchema.pre('save', function(){
     this.slug = slugify(this.name)
 })
 
-// slug name when updating
-categorySchema.pre('findOneAndUpdate', function() {
+// slug name when updating brand
+brandSchema.pre('findOneAndUpdate', function() {
     if(this._update.name){
         this._update.slug = slugify(this._update.name);
     }
 });
 
-export const categoryModel = model('Category', categorySchema)
+export const brandModel = model('Brand', brandSchema)
